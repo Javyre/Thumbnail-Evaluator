@@ -1,6 +1,10 @@
 #+TITLE: Data Selection Proposal
 #+AUTHOR: Javier A. Pollak (260446737)
+#+DATE: February 8, 2021
 #+OPTIONS: toc:nil
+#+LATEX_CLASS: article
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage{lmodern}
 
 * Dataset Choice
   *Kaggle Dataset*: https://www.kaggle.com/wchaktse/data-of-5132-youtube-videos 
