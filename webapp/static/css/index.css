@@ -1,0 +1,122 @@
+* {
+    font-family: Sans-serif;
+    font-size: 17px;
+}
+
+/* display custom button instead of system-dependent button */
+.upload-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-wrapper > button {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    border: none;
+}
+.upload-wrapper > input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+
+button,
+input[type=button],
+input[type=submit],
+.upload-wrapper { 
+    display: block;
+    background-color: white; 
+    border: 1px solid; 
+    border-color: lightgray;
+    border-radius: 5px;
+    margin-right: 15px;
+    height: auto;
+} 
+
+button:hover,
+input[type=button]:hover,
+input[type=submit]:hover,
+.upload-wrapper:hover { 
+    box-shadow: 0 0 5px 1px #FFFA;
+}
+
+body {
+    background-color: #201E1E;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+#main-container-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    width: 120ex;
+    border-radius: 7px;
+    background-color: white;
+}
+
+#main-container > header {
+    padding: 0 15px 0 15px;
+}
+
+#main-container > header h1 {
+    font-size: 30px;
+    margin: 15px 0 15px 0;
+    color: #E02929;
+}
+
+#upload-form {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 15px;
+    background-color: #E02929;
+}
+
+#image-preview {
+    position: relative;
+    width: 320px;
+    height: 180px;
+    margin-right: 15px;
+    background-color: #0005;
+}
+
+#image-preview .upload-wrapper {
+    opacity: 0.8;
+    border: none;
+    position: absolute;
+    height: 45px;
+    width: 90px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.hint {
+    color: gray;
+}
+
+#output {
+    display: flex;
+    padding: 15px;
+    border-radius: 0 0 7px 7px;
+}

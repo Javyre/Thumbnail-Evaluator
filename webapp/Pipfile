@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "~=1.1"
+keras = "~=2.4"
+pyxdg = "*"
+hamlish-jinja = ">=0.3.3"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
+
+[scripts]
+run = "sh -c 'FLASK_APP=server.py exec flask run --host=0.0.0.0'"
+run-debug = "sh -c 'FLASK_APP=server.py FLASK_ENV=development exec flask run --host=0.0.0.0'"
