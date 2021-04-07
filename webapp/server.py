@@ -8,6 +8,7 @@ from hamlish_jinja import HamlishExtension
 import os
 
 from model import Model
+from youtube import fetch_examples
 
 # Setup environment
 UPLOAD_DIR = os.path.join(xdg_runtime_dir(strict=False),
@@ -27,8 +28,6 @@ app.jinja_env.hamlish_enable_div_shortcut = True
 
 def is_allowed_fname(fname):
     return '.' in fname and fname.rsplit('.', 1)[1].lower() in ALLOWED_EXT
-
-# def validate_file(req, fname):
 
 @app.route('/')
 def index():
@@ -55,11 +54,7 @@ def process_file():
         os.remove(fname)
         return render_template('output.haml', output={
             'category': prediction,
-            'examples': [
-                'https://www.youtube.com/watch?v=fHsa9DqmId8',
-                'https://www.youtube.com/watch?v=fHsa9DqmId8',
-                'https://www.youtube.com/watch?v=fHsa9DqmId8',
-            ]
+            'examples': fetch_examples(prediction),
         })
 
     return 'invalid file'

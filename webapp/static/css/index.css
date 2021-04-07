@@ -31,8 +31,7 @@
 
 button,
 input[type=button],
-input[type=submit],
-.upload-wrapper { 
+input[type=submit] { 
     display: block;
     background-color: white; 
     border: 1px solid; 
@@ -45,7 +44,7 @@ input[type=submit],
 button:hover,
 input[type=button]:hover,
 input[type=submit]:hover,
-.upload-wrapper:hover { 
+.upload-wrapper:hover button { 
     box-shadow: 0 0 5px 1px #FFFA;
 }
 
@@ -71,7 +70,7 @@ body {
 #main-container {
     display: flex;
     flex-direction: column;
-    width: 120ex;
+    width: 134ex;
     border-radius: 7px;
     background-color: white;
 }
@@ -104,13 +103,29 @@ body {
 
 #image-preview {
     position: relative;
-    width: 320px;
-    height: 180px;
+    width: 320pt;
+    height: 180pt;
     margin-right: 15px;
     background-color: #0005;
 }
+#image-preview.not-empty:hover {
+    background-color: #0000;
+}
 
-#image-preview .upload-wrapper {
+#image-preview:hover button {
+    opacity: 0.9;
+}
+#image-preview.not-empty:hover::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #0005;
+    content: '';
+}
+
+.upload-wrapper button {
     opacity: 0.8;
     border: none;
     position: absolute;
@@ -178,4 +193,19 @@ body {
 
 #star-rating .fa-star.star-checked {
     color: gold;
+}
+
+#video-examples .grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 15px;
+    margin-right: -15px;
+    margin-bottom: -15px;
+}
+
+.grid iframe.yt {
+    width: 320pt;
+    height: 180pt;
+    margin-right: 15px;
+    margin-bottom: 15px;
 }

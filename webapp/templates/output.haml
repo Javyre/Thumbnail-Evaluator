@@ -12,15 +12,15 @@
 
     %span
         -if output.category == 0:
-            This is a rookie thumbnail! Don't expect any more than around 10
+            This is a rookie thumbnail! Don't expect any more than around 4500
             views.
         -if output.category == 1:
-            Not a bad thumbnail! You could get anywhere from 0 to 10 views.
+            Not a bad thumbnail! You could get anywhere from 4.5k to 57k views.
         -if output.category == 2:
-            Impressive! You should see at least 100 views with this thumbnail!
+            Impressive! You should see at least 57k views with this thumbnail!
 
 #video-examples 
     Here are some examples of videos with the same score:
-    %ul
+    .grid
         -for example in output.examples:
-            %li -> =example
+            %iframe.yt src="https://www.youtube.com/embed/{{example}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen

@@ -18,12 +18,11 @@
                 Upload an image file and see how well it will do as a youtube
                 video thumbnail!
         %form#upload-form method=post enctype="multipart/form-data"
-            #image-preview
-                .upload-wrapper
-                    %button
-                        %label id="image-field-label" for=file
-                            Choose File
-                    %input id="image-field" type=file name=file required
+            #image-preview.upload-wrapper
+                %button
+                    %label id="image-field-label" for=file
+                        Choose File
+                %input id="image-field" type=file name=file required
 
             %input id="submit-btn" type=submit value="Evalutate!"
 
@@ -44,6 +43,9 @@
             label_field: "#image-field-label",
             label_default: "Choose File",
             label_selected: "Change File",
+            success_callback: function () {
+                $("#image-preview").addClass("not-empty");
+            }
         });
 
         $("#upload-form").on('submit', function (e) {
