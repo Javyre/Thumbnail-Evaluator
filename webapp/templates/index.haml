@@ -3,12 +3,17 @@
 
 %title -> Thumbnail Evaluator
 %link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}"
+%link rel="stylesheet" href="{{ url_for('static', filename='css/spinner.css') }}"
 %link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"
+
+%link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 
 %article id="main-container-wrapper"
     #main-container
         %header
-            %h1 -> Thumbnail Evaluator
+            .title
+                %span.fa.fa-youtube-play
+                %h1 -> Thumbnail Evaluator
             %p
                 Upload an image file and see how well it will do as a youtube
                 video thumbnail!
@@ -23,8 +28,10 @@
             %input id="submit-btn" type=submit value="Evalutate!"
 
         #output
+            #spinner.spinner
             %span class="hint"
                 Your results will appear here.
+            #output-content
 
 %script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
 %script src="{{ url_for('static', filename='js/jquery-upload-preview.js') }}"
@@ -41,6 +48,10 @@
 
         $("#upload-form").on('submit', function (e) {
             e.preventDefault();
+            $("#submit-btn").prop("disabled", true);
+            $("#spinner").show();
+            $("#output > .hint").show();
+            $("#output-content").html("");
             $.ajax({
                 url: "process",
                 type: "POST",
@@ -49,7 +60,10 @@
                 cache: false,
                 processData: false,
                 success: function (data) {
-                    $("#output").html(data);
+                    $("#output-content").html(data);
+                    $("#submit-btn").prop("disabled", false);
+                    $("#spinner").hide();
+                    $("#output > .hint").hide();
                 },
             });
         })

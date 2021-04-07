@@ -1,6 +1,26 @@
 ; vim:shiftwidth=4
 
-%p -> Category: {{output.category}}
-%ul#video-example
-    -for example in output.examples:
-        %li -> =example
+%header
+    #star-rating-wrapper
+        %span -> Score:
+        #star-rating
+            -for i in range(3):
+                -if i <= output.category:
+                    %span.fa.fa-star.star-checked
+                -else
+                    %span.fa.fa-star
+
+    %span
+        -if output.category == 0:
+            This is a rookie thumbnail! Don't expect any more than around 10
+            views.
+        -if output.category == 1:
+            Not a bad thumbnail! You could get anywhere from 0 to 10 views.
+        -if output.category == 2:
+            Impressive! You should see at least 100 views with this thumbnail!
+
+#video-examples 
+    Here are some examples of videos with the same score:
+    %ul
+        -for example in output.examples:
+            %li -> =example

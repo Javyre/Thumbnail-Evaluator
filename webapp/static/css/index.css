@@ -3,6 +3,10 @@
     font-size: 17px;
 }
 
+.fa-youtube-play {
+    color: #E02929;
+}
+
 /* display custom button instead of system-dependent button */
 .upload-wrapper {
     position: relative;
@@ -73,13 +77,21 @@ body {
 }
 
 #main-container > header {
-    padding: 0 15px 0 15px;
+    padding: 15px 15px 0 15px;
+}
+
+#main-container > header .title {
+    display: flex;
+    align-items: center;
 }
 
 #main-container > header h1 {
     font-size: 30px;
-    margin: 15px 0 15px 0;
-    color: #E02929;
+    margin: 0;
+}
+#main-container > header .fa-youtube-play {
+    font-size: 48px;
+    margin-right: 10px;
 }
 
 #upload-form {
@@ -111,12 +123,59 @@ body {
     right: 0;
 }
 
+#spinner {
+    display: none;
+    margin-bottom: 15px;
+}
+
 .hint {
     color: gray;
 }
 
 #output {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 15px;
     border-radius: 0 0 7px 7px;
+}
+
+#output-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#output-content > header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#star-rating-wrapper {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding-left: 5px;
+    border-radius: 7px;
+    background-color: #EFEFEF;
+    margin-right: 15px;
+}
+
+#star-rating {
+    margin-left: 5px;
+    background-color: #201E1E;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+#star-rating .fa-star {
+    color: #DDD;
+    font-size: 23px;
+    margin: 2px;
+}
+
+#star-rating .fa-star.star-checked {
+    color: gold;
 }
