@@ -5,9 +5,10 @@ name = "pypi"
 
 [packages]
 flask = "~=1.1"
-keras = "~=2.4"
+tensorflow = "~=2.4"
 pyxdg = "*"
 hamlish-jinja = ">=0.3.3"
+pillow = "*"
 
 [dev-packages]
 

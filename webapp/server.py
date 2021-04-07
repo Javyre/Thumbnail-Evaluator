@@ -1,11 +1,13 @@
 from xdg.BaseDirectory import get_runtime_dir as xdg_runtime_dir
-from flask import Flask, flash, request, redirect, render_template
+from flask import Flask, flash, request, g, redirect, render_template
 from werkzeug.utils import secure_filename
 
 from jinja2 import Environment
 from hamlish_jinja import HamlishExtension
 
 import os
+
+from model import Model
 
 # Setup environment
 UPLOAD_DIR = os.path.join(xdg_runtime_dir(strict=False),
@@ -18,7 +20,8 @@ ALLOWED_EXT = {'png', 'jpg', 'jpeg'}
 # Setup Flask app
 app = Flask(__name__)
 app.jinja_options['extensions'] += [HamlishExtension]
-app.config['UPLOAD_FOLDER'] = UPLOAD_DIR
+app.config['UPLOAD_DIR'] = UPLOAD_DIR
+app.config['MODEL_DIR'] = 'static/model.h5'
 
 app.jinja_env.hamlish_enable_div_shortcut = True
 
@@ -42,9 +45,16 @@ def process_file():
 
     if file and is_allowed_fname(file.filename):
         fname = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], fname))
+        fname = os.path.join(app.config['UPLOAD_DIR'], fname)
+        file.save(fname)
+
+        if 'model' not in g:
+            g.model = Model(app.config['MODEL_DIR'])
+
+        prediction = g.model.predict(fname)
+        os.remove(fname)
         return render_template('output.haml', output={
-            'category': 1,
+            'category': prediction,
             'examples': [
                 'https://www.youtube.com/watch?v=fHsa9DqmId8',
                 'https://www.youtube.com/watch?v=fHsa9DqmId8',
