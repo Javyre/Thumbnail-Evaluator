@@ -16,7 +16,7 @@ UPLOAD_DIR = os.path.join(xdg_runtime_dir(strict=False),
 if not os.path.isdir(UPLOAD_DIR):
     os.mkdir(UPLOAD_DIR)
 
-ALLOWED_EXT = {'png', 'jpg', 'jpeg'}
+ALLOWED_EXT = {'png', 'jpg', 'jpeg', 'webp'}
 
 # Setup Flask app
 app = Flask(__name__)
